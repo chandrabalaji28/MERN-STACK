@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Form</title>
+</head>
+<body>
+    <form>
+        <h1> Product Order Form with Advanced Attributes</h1>
+
+        <label for="name">Name</label>
+        <input type="text"  name="name" placeholder="Enter your Name" required><br><br>
+
+        <label for="email">Email</label>
+        <input type="email"  name="email" placeholder="Enter your email address"><br><br>
+
+        <label for="select"> select a product category :</label>
+        <select name="select">
+        <option value="">--select Product--</option>
+        <option value="electronics">Electronics</option>
+        
+        
+        <option value="books">Books</option>
+        <option value="clothing">Clothing</option>
+        </select><br><br>
+
+
+        <select name="Product">
+          <ul> 
+            <option value="">--select Electronics Product--</option>
+            <option value="laptop" class="electronics">Laptop</option>
+            <option value="Smartphone" class="electronics"> Smartphone</option>
+            <option value="tablet" class="electronics">Tablet</option>
+          </ul>  
+            
+            <option value="">--select Books Product--</option>
+            <option value="Fiction" class="Books">Fiction</option>
+            <option value="Non-fiction" class="Books">Non-fiction</option>
+            <option value="Comics" class="Books">Comics</option>
+        
+            <!-- Clothing products -->
+            <option value="">--select Clothing Product--</option>
+            <option value="Shirt" class="Clothing">Shirt</option>
+            <option value="Pants" class="Clothing">Pants</option>
+            <option value="Jacket" class="Clothing">Jacket</option>
+            </select><br><br>
+
+
+       
+
+        <label for="Quantity">Quantity of the Product</label>
+        <input type="number"max="10" min="1" step="1" ><br><br>
+
+        <label for="delivery">Delivery date and time</label>
+        <input type="datetime-local" name="date-and-time"  ><br><br>
+
+        <label for="notes">Additional notes:</label>
+        <textarea maxlength="100" name="notes" placeholder="write Additional notes"  rows="5" cols="30"></textarea><br><br>
+
+        <label for="payment">Payment option:</label>
+        <input type="checkbox" name="Payment" value="credit-card">Credit Card
+        <input type="checkbox" name="payment" value="paypal">PayPal
+        <input type="checkbox" name="payment" value="bank-transfer">Bank Transfer
+
+        <br><br>
+
+      <button type="submit">Submit</button>
+    </form>
+</body>
+</html>
