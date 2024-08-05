@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grid1</title>
+    <style>
+        #container{
+            display: grid;
+            grid-template-columns: 120px 120px 150px 150px;
+            grid-template-rows: 90px 90px  ;
+            gap: 10px;
+            grid-template-areas:
+            "first first second five "
+            " third four second five"
+            ;
+           
+        }
+        #container>div{
+            padding: 19px;
+            border-radius: 10px;
+            color: white;
+            font-size: 20px;
+            font-weight: bold;
+           
+        }
+        #container>div:nth-child(1){
+            background-color: slategray;
+            grid-area: first;
+
+        }
+
+        #container>div:nth-child(2){
+            background-color: slategray;
+            grid-area: second;
+            
+        }
+        #container>div:nth-child(3){
+            background-color: slategray;
+            grid-area: third;
+            
+        }
+        #container>div:nth-child(4){
+            background-color: slategray;
+            grid-area: four;
+            
+        }
+        #container>div:nth-child(5){
+            background-color: slategray;
+            grid-area: five;
+            
+        }
+        /* #container>div:nth-child(6){
+            background-color: slategray;
+            grid-area: six;
+            
+        }
+        #container>div:nth-child(7){
+            background-color: slategray;
+            grid-area: seven;
+            
+        }
+        #container>div:nth-child(8){
+            background-color: slategray;
+            grid-area: eight;
+            
+        }  */
+       
+    </style>
+</head>
+<body>
+
+    <div id="container">
+        <div>A</div>
+        <div>B</div>
+        <div>C</div>
+        <div>D</div>
+        <div>E</div>
+        <!-- <div>6</div>
+        <div>7</div>
+        <div>8</div> -->
+        
+    </div>
+    
+</body>
+</html>

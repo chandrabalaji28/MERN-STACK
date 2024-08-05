@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grid1</title>
+    <style>
+        #container{
+            display: grid;
+            grid-template-columns: 65px 60px 60px 65px 65px;
+            grid-template-rows: 60px 60px 60px ;
+            gap: 15px;
+            grid-template-areas:
+            "first second second second third"
+            " four four four six ten"
+            "seven eight nine nine nine";
+           
+        }
+        #container>div{
+            /* padding: 19px; */
+            /* border-radius: 10px; */
+            color: white;
+            font-size: 20px;
+            font-weight: bold;
+           
+        }
+        #container>div:nth-child(1){
+            background-color: rgb(33,120,103);
+            grid-area: first;
+
+        }
+
+        #container>div:nth-child(2){
+            background-color: rgb(33,120,103);
+            grid-area: second;
+            
+        }
+        #container>div:nth-child(3){
+            background-color: rgb(33,120,103);
+            grid-area: third;
+            
+        }
+        #container>div:nth-child(4){
+            background-color: rgb(33,120,103);
+            grid-area: four;
+            padding-right: 90px;
+            
+        }
+        #container>div:nth-child(5){
+            background-color: rgb(33,120,103);
+            grid-area: five;
+            
+        }
+        #container>div:nth-child(6){
+            background-color: rgb(33,120,103);
+            grid-area: six;
+            
+        }
+        #container>div:nth-child(7){
+            background-color: rgb(33,120,103);
+            grid-area: seven;
+            
+        }
+        #container>div:nth-child(8){
+            background-color: rgb(33,120,103);
+            grid-area: eight;
+            
+        } #container>div:nth-child(9){
+            background-color: rgb(33,120,103);
+            grid-area: nine;
+            
+        }
+        #container>div:nth-child(10){
+            background-color: rgb(33,120,103);
+            grid-area: ten;
+            
+        }
+        /* #container>div:nth-child(11){
+            background-color: rgb(33,120,103);
+            grid-area: eleven;
+            
+        } */
+       
+        
+
+        
+        
+
+    </style>
+</head>
+<body>
+
+    <div id="container">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        
+    </div>
+    
+</body>
+</html>
