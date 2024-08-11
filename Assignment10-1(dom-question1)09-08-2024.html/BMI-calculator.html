@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="bmi">
+        <h1>Check Your BMI</h1>
+        <p>Enter your weight and  height below to check your BMI results</p>
+        <label>Put your weight in here (KG)</label><br/><br/>
+        <input type="text" id="kg" placeholder="Enter your weight"><br/><br/>
+        <label>And your height in here (CM)</label><br/><br/>
+        <input type="text" id="cm" placeholder="Enter your height"><br/><br/>
+        <input type="submit" value="Calulate BMI" id="submit"> <br/>
+
+       <h2 id="h2" ></h2>
+    </div>
+</body>
+</html>
+
+<script>
+    document.querySelector("#submit").addEventListener("click",bmicalculator);
+
+    function bmicalculator(){
+       
+
+        let weight=document.querySelector("#kg").value;
+      
+        let height=document.querySelector("#cm").value;
+
+        let result=0;
+
+        result=[(weight)/(height*height)]*10000;
+       
+        
+        result=result.toFixed(2);
+       
+
+        if(result<=18.4){
+        document.querySelector("#h2").innerText="Your BMI is "+result+  " which means You Under Weight";
+            
+                
+        }else if(result>=18.5 && result<=24.9){
+
+            document.querySelector("#h2").innerText="Your BMI is "+result+  " which means You Normal Weight";
+
+
+        }else if(result>=25 && result<=29.9){
+
+            document.querySelector("#h2").innerText="Your BMI is "+result+  " which means You Over Weight";
+
+        }else if(result>=30){
+            document.querySelector("#h2").innerText="Your BMI is "+result+  " which means You Obese";
+           
+        }
+
+        document.querySelector("#kg").value="";
+      
+        document.querySelector("#cm").value="";
+        
+        
+     
+
+
+
+    }
+</script>
