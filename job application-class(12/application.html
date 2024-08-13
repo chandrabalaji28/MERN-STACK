@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="links">
+      <div><a href="./index.html">Home</a></div>
+      <div><a href="./application.html">Applied Jobs</a></div>
+      <div><a href="./bookmarks.html">Bookmarks</a></div>
+    </div>
+
+    <select id="sortNames" onChange="handleNameSort()">
+      <option value="">Sort by Name</option>
+      <option value="asc">Ascending</option>
+      <option value="dsc">Descending</option>
+    </select>
+
+    <select id="sortSalary" onChange="handleSalarySort()">
+      <option value="">Sort by Salary</option>
+      <option value="HTL">High to Low</option>
+      <option value="LTH">Low to High</option>
+    </select>
+
+    <select id="filterRole" onChange="handleFilter()">
+      <option value="">Filter Category</option>
+      <option value="fsd">FSD</option>
+      <option value="frontend">FrontEnd</option>
+      <option value="backend">BackEnd</option>
+    </select>
+
+    <main>
+      <table border="1">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Job applied</th>
+            <th>Salary expected</th>
+            <th>Add to Bookmark</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- data will be coming from js  -->
+        </tbody>
+      </table>
+    </main>
+  </body>
+</html>
+
+<script>
+  let jobArr = JSON.parse(localStorage.getItem("jobList"));
+  let bookMarkArr = JSON.parse(localStorage.getItem("bookmarks")) || [];
+  display(jobArr);
+
+  function bookMarkFun(elem) {
+    bookMarkArr.push(elem);
+    localStorage.setItem("bookmarks", JSON.stringify(bookMarkArr));
+    
+    window.location.href = "bookmarks.html";
+  }
+
+  //role filter
+  function handleFilter(){
+    let selected=document.getElementById("filterRole").value;
+    let filterarray=jobArr.filter(function(element){
+      return element.personRole===selected;
+      
+    });
+    // document.querySelector("tbody").innerHTML="";
+    display(filterarray);
+  }
+
+  //salary sorted
+
+  function handleSalarySort(){
+    let selected=document.getElementById("sortSalary").value;
+    
+    if(selected=="HTL"){
+      jobArr.sort(function(a,b){
+        return b.personSalary-a.personSalary;
+      })
+    }
+    if(selected=="LTH"){
+      jobArr.sort(function(a,b){
+        return a.personSalary-b.personSalary;
+      })
+    }
+    display(jobArr);
+  }
+  
+
+  //sorted names
+
+  function handleNameSort(){
+   let selected= document.querySelector("#sortNames").value;
+
+    if(selected==="asc"){
+      jobArr.sort(function(a,b){
+
+        // let x=a.personName;
+        // let y=b.personName;
+
+        if(a.personName>b.personName){
+          return 1;
+        }
+        if(a.personName<b.personName){
+          return -1;
+        }
+        return 0;
+      });
+      display(jobArr);
+    }
+
+    if(selected==="dsc"){
+      jobArr.sort(function(a,b){
+
+        // let x=a.personName;
+        // let y=b.personName;
+
+        if(a.personName>b.personName){
+          return -1;
+        }
+        if(a.personName<b.personName){
+          return 1;
+        }
+        return 0;
+      });
+      display(jobArr);
+    }
+  }
+
+
+
+  function display(data){
+    document.querySelector("tbody").innerHTML="";
+    data.forEach(function (elem) {
+      
+    let tr = document.createElement("tr");
+
+    let td1 = document.createElement("td");
+    td1.innerText = elem.personName;
+    let td2 = document.createElement("td");
+    td2.innerText = elem.personEmail;
+    let td3 = document.createElement("td");
+    td3.innerText = elem.personRole;
+    let td4 = document.createElement("td");
+    td4.innerText = elem.personSalary;
+    let td5 = document.createElement("td");
+    td5.innerText = "Bookmark";
+    td5.addEventListener("click", function () {
+      bookMarkFun(elem);
+    });
+
+    tr.append(td1, td2, td3, td4, td5);
+
+    document.querySelector("tbody").append(tr);
+  });
+  }
+</script>
