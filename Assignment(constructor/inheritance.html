@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+
+<script>
+    
+let Amar={
+     name:"Amar",
+     job:"singer",
+     location:"Goa",
+     sing:function (){
+
+        console.log(`${this.name} is singing beautifull`);
+     }
+}
+
+let Akbar={
+     name:"Akbar",
+     job:"chef",
+     location:"Mumbai",
+     cook:function (){
+
+        console.log(`${this.name} is cooking a delicious meal!`);
+     }
+}
+let Anthony={
+     name:"Anthony",
+     job:"Magician",
+     location:"Kashmir",
+     magic:function (){
+
+        console.log(`${this.name} is performing a mind-blowing magic trick!`);
+     }
+}
+
+Amar.sing.call(Akbar);
+Akbar.cook.call(Anthony);
+Anthony.magic.call(Amar);
+
+</script>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .product {
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin: 10px;
+            width: 200px;
+            display: inline-block;
+            vertical-align: top;
+            text-align: center;
+        }
+        .product img {
+            max-width: 100%;
+            height: auto;
+        }
+        .product button {
+            margin: 5px;
+            padding: 10px;
+            cursor: pointer;
+            border: none;
+            color: white;
+        }
+        #sold.green {
+            background-color: green;
+        }
+        #sold.red {
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+
+    <div>
+        <h1>Products listing</h1>
+        <div id="product-list"></div>
+        <div id="products-details"></div>
+    </div>
+    
+</body>
+</html>
+<script>
+     function updateCounter() {
+            const products = JSON.parse(localStorage.getItem('Products')) || [];
+            document.getElementById('product-list').textContent = `Total Products: ${products.length}`;
+        }
+    function renderProducts(){
+        let productDetails=document.querySelector("#products-details");
+        productDetails.innerHTML="";
+        const products = JSON.parse(localStorage.getItem('Products')) || [];
+
+     products.forEach((product, index) => {
+    const productDiv = document.createElement('div');
+    productDiv.classList.add('product');
+    productDiv.innerHTML = `
+                    <img src="${product.imageUrl}" alt="${product.name}">
+                    <h2>${product.name}</h2>
+                    <p>Category: ${product.category}</p>
+                    <p>Price: $${product.price}</p>
+                    <p>Gender: ${product.gender}</p>
+                    <button id="sold" class="${product.sold ? 'red' : 'green'}">${product.sold ? 'Sold' : 'Available'}</button>
+                    <button id="remove">Remove</button>
+                `;
+
+                productDetails.appendChild(productDiv);
+
+                // Add event listener for the Sold button
+                productDiv.querySelector('#sold').addEventListener('click', function() {
+                    // Toggle the sold status
+                    products[index].sold = !products[index].sold;
+                    localStorage.setItem('Products', JSON.stringify(products));
+                    renderProducts(); // Re-render the products to reflect changes
+                });
+
+                // Add event listener for the Remove button
+                productDiv.querySelector('#remove').addEventListener('click', function() {
+                    // Remove the product from the array
+                    products.splice(index, 1);
+                    localStorage.setItem('Products', JSON.stringify(products));
+                    renderProducts(); // Re-render the products to reflect changes
+                    updateCounter(); // Update the counter after removal
+                });
+            });
+
+            // Update the product counter
+            updateCounter();
+        }
+
+        // Initial render of products
+        renderProducts();
+    
+    
+</script>

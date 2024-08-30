@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <h1>E-Commerce Admin Panel</h1>
+
+
+        <form id="dashboard">
+            <label>Product Name:</label>
+            <input type="text" id="name" value=""><br><br>
+            <label>Category:</label>
+            <input type="text" id="category" value=""><br><br>
+            <label>Image url:</label>
+            <input type="text" id="image" value=""><br><br>
+            <label>Price:</label>
+            <input type="text" id="price" value=""><br><br>
+
+            <label>Gender</label>
+            <select id="gender">
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="others">others</option>
+            </select><br><br>
+
+            <label>Sold:</label>
+
+            <input type="checkbox" id="sold"><br><br>
+            <button value="submit" id="add">Add to cart</button>
+
+        </form>
+    </div>
+    
+</body>
+</html>
+<script>
+    function Product(name,category,image,price,gender,sold){
+        this.productName=name,
+        this.category=category,
+        this.image=image,
+        this.price=price,
+        this.gender=gender,
+        this.sold=sold||false
+
+    }
+
+    document.querySelector("#dashboard").addEventListener("submit",function(event){
+       event.preventDefault();
+        let name=document.querySelector("#name").value;
+        let category=document.querySelector("#category").value;
+        let image=document.querySelector("#image").value;
+        let price=document.querySelector("#price").value;
+        let gender=document.querySelector("#gender").value;
+        let sold=document.querySelector("#sold").value;
+
+        let newProduct=new Product(name,category,image,price,gender,sold);
+        console.log(newProduct);
+
+         let productStore=JSON.parse(localStorage.getItem("products")) ||[]
+
+         productStore.push(newProduct);
+
+         localStorage.setItem("products" ,JSON.stringify(productStore));
+
+         document.querySelector("#dashboard").reset();
+       
+    })
+</script>
